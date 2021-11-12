@@ -1,12 +1,6 @@
 <?php 
-    if(!isset($_GET['idsujet']) || !is_numeric($_GET['idsujet']))
-    header('Location: index.php');
-    else {
-        extract($_GET);
-        $id = strip_tags($id);
-        require_once('function.php');
-        $article = getArticle($id);
-    }
+require_once('functions.php');
+$articles = getArticles();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -14,10 +8,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?= $article->titresujet ?></title>
+    <title>Mon Blog</title>
 </head>
 <body>
-    <h1><?= $article->titresujet ?></h1>
-    <p><?= $article->textesujet ?></p>
+        <h1>Articles :</h1>
+        <?php foreach($articles as $article):?>
+            <h2><?= $article->titresujet?></h2>
+            <p><?=$article->textesujet ?></p>
+            <a href="article.php?idsujet<?php echo $article->idsujet ?>">Lire la suite</a>
+        <?php endforeach;?>
 </body>
-</html>
+</html> 

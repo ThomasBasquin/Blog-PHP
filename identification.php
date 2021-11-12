@@ -8,57 +8,79 @@
     <title>Identification</title>
     <?php 
        $messageErreur ="";
-       $Ok = true;
-        if(isset($_POST['val'])) {
+       $Ok_inscri = true;
+        if(isset($_POST['inscription'])) {
             if(empty($_POST['pseudo'])) {
                 $messageErreur = $messageErreur + "Saisir un pseudo";
-                $Ok = false;
+                $Ok_inscri = false;
             }
             if(empty($_POST['prenom'])) {
                 $messageErreur = $messageErreur + "Saisir un prenom";
-                $Ok = false;
+                $Ok_inscri = false;
             }
             if(empty($_POST['nom'])) {
                 $messageErreur = $messageErreur + "Saisir un nom";
-                $Ok = false;
+                $Ok_inscri = false;
             }
-            if(!filter_var($_POST['mel'],FILTER_VALIDATE_EMAIL)) {
+            if(!filter_var($_POST['mail_inscri'],FILTER_VALIDATE_EMAIL)) {
                 $messageErreur = $messageErreur + "Veuillez saisir un email correcte";
-                $Ok = false;
+                $Ok_inscri = false;
             }
-            if (empty($_POST['mdp'])) {
+            if (empty($_POST['password_inscri'])) {
                 $messageErreur = $messageErreur + "Saisir un mot de passe";
-                $Ok = false;
+                $Ok_inscri = false;
             }
-            if(!ctype_alnum($_POST['mdp'])) {
+            if(!ctype_alnum($_POST['password_inscri'])) {
                 $messageErreur = $messageErreur + "Saisir un mot de passe avec uniquement des caractere et des nombres";
-                $Ok = false;
+                $Ok_inscri = false;
             }
-            if(!strlen($_POST['mdp'])>6) {
+            if(!strlen($_POST['password_inscri'])>6) {
                 $messageErreur = $messageErreur + "Saisir un mot de passe avec minimum 6 caracteres";
-                $Ok = false;
+                $Ok_inscri = false;
             }
-            if (!preg_match('`[A-Z]`',$_POST['mdp'])) {
+            if (!preg_match('`[A-Z]`',$_POST['password_inscri'])) {
                 $messageErreur = $messageErreur + "Saisir aumoins une majuscule dans le mot de passe";
-                $Ok = false;
+                $Ok_inscri = false;
             }
-            if(!preg_match('`[a-z]`',$_POST['mdp'])) {
+            if(!preg_match('`[a-z]`',$_POST['password_inscri'])) {
                 $messageErreur = $messageErreur + "Saisir aumoins une minuscule dans le mot de passe";
-                $Ok = false;
+                $Ok_inscri = false;
             }
-            if(!preg_match('`[0-9]`',$_POST['mdp'])) {
+            if(!preg_match('`[0-9]`',$_POST['password_inscri'])) {
                 $messageErreur = $messageErreur + "Saisir aumoins un chiffre dans le mot de passe";
-                $Ok = false;
+                $Ok_inscri = false;
             }
-            if ($Ok) {
-                require_once('connect.php');
+            if ($Ok_inscri) {
+                require_once 'connect.php';
                 $req = 'INSERT INTO redacteur (idredacteur,nom,prenom,adressemail,motdepasse,pseudo) VALUES(?,?,?,?,?,?)';
                 $insert = $objPdo->prepare($req);
                 $insert->execute(array($id,$_POST['pseudo'],$_POST['prenom'],$_POST['nom'],$_POST['mel'],$_POST['mdp']));
             }
-        }
-            
+        }       
     ?>
+    <?php
+      if(isset($_POST['connexion'])) {
+          session_start();
+          require_once 'connect.php';
+
+          $email = htmlspecialchars($_POST['mail_connex']);
+          $password = htmlspecialchars($_POST['password_connex']);
+
+          $check = $objPdo->prepare('SELECT adressemail,motdepasse, pseudo FROM redacteur WHERE adressemail = ?');
+          $check->execute(array($email));
+          $data = $check->fetch();
+          $row = $check->rowCount();
+
+          if($row == 1) {
+            if(filter_var($email, FILTER_VALIDATE_EMAIL)) {
+              if($data['motdepasse'] == $password) {
+                $_SESSION['user'] = $data['pseudo'];
+              }
+            }
+          }
+        }
+    ?>
+
 </head>
 <body>
 <header class="header" id="header">
@@ -91,17 +113,17 @@
       <div class="inscription">
         <h2 class="title">Inscription</h2>
 
-        <form action="identification.php" method="POST" name ='val' >
+        <form action="identification.php" method="POST" name ='identification' >
             <div class="champs">    
               <div class="ligne"><label for="pseudo">Pseudo </label><input type="text" name="pseudo" id="pseudo" placeholder = "Neopreda" size = 25> </div> </br>
               <div class="ligne"><label for="prenom">Prénom </label><input type="text" name="prenom" id="prenom" placeholder = "Noé" size = 25> </div> </br>
               <div class="ligne"><label for="nom">Nom </label><input type="text" name="nom" id="nom" placeholder = "Harrison" size = 25> </div> </br>
-              <div class="ligne"><label for="mel">Email </label><input type="text" name="mel" id="mel" placeholder = "NoeHarrison@gmail.com" size = 25> </div> </br>
-              <div class="ligne"><label for="mdp">Mot de passe </label><input type="password" name="mdp" id="mdp" size = 25> </div> </br>
+              <div class="ligne"><label for="mel">Email </label><input type="text" name="mel" id="mail_inscri" placeholder = "NoeHarrison@gmail.com" size = 25> </div> </br>
+              <div class="ligne"><label for="mdp">Mot de passe </label><input type="password" name="password_inscri" id="mdp" size = 25> </div> </br>
             </div>  
 
             <div class = "boutons">
-              <input type="submit" name="val" value="S'inscrire">
+              <input type="submit" name="inscription" value="S'inscrire">
             </div>
         </form>
 
@@ -112,12 +134,12 @@
 
         <form action="identification.php" method="POST" name ='val' >
           <div class="champs">    
-            <div class="ligne"><label for="mel">Email </label><input type="text" name="mel" id="mel" placeholder = "NoeHarrison@gmail.com" size = 25> </div> </br>
-            <div class="ligne"><label for="mdp">Mot de passe </label><input type="password" name="mdp" id="mdp" size = 25> </div> </br>
+            <div class="ligne"><label for="mel">Email ou pseudo </label><input type="text" name="mel" id="mail_connex" placeholder = "NoeHarrison@gmail.com" size = 25> </div> </br>
+            <div class="ligne"><label for="mdp">Mot de passe </label><input type="password" name="password_connex" id="mdp" size = 25> </div> </br>
           </div>  
 
           <div class = "boutons">
-            <input type="submit" name="val" value="Connexion">
+            <input type="submit" name="connexion" value="connexion">
           </div>
         </form>
       </div>
