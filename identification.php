@@ -59,26 +59,25 @@
         }       
     ?>
     <?php
+      require_once 'connect.php';
+      session_start();
+        
       if(isset($_POST['connexion'])) {
-          session_start();
-          require_once 'connect.php';
-
-          $email = htmlspecialchars($_POST['mail_connex']);
-          $password = htmlspecialchars($_POST['password_connex']);
+          $email = $_POST['mail_connex'];
+          $password = $_POST['password_connex'];
 
           $check = $objPdo->prepare('SELECT adressemail,motdepasse, pseudo FROM redacteur WHERE adressemail = ?');
           $check->execute(array($email));
           $data = $check->fetch();
           $row = $check->rowCount();
 
-          if($row == 1) {
-            if(filter_var($email, FILTER_VALIDATE_EMAIL)) {
-              if($data['motdepasse'] == $password) {
-                $_SESSION['user'] = $data['pseudo'];
-              }
+          if($rows == 1) {
+            if($data['motdepasse'] == $password) {
+              $_SESSION['user'] = $data['pseudo'];
+              header("Location: index.php");
             }
           }
-        }
+      } 
     ?>
 
 </head>
