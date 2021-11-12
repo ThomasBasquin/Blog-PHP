@@ -1,0 +1,158 @@
+/* ======================== Google Fonts ======================== */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+
+:root {
+  --header-heigth: 3rem;
+
+  /* ================ Colors ================ */
+
+  --first-color: ;
+  --text-color: ;
+  --title-color: #6d6a7c;
+  --body-color: ;
+
+
+  /* ================ Font ================ */
+  --body-font: "Poppins", sans-serif;
+}
+
+/* ======================== Base ======================== */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  height: 100%;
+  margin: 0 ;
+  font-family: var(--body-font);
+  font-size: 0.938rem;
+  background-color: var(--body-color);
+  color: var(--text-color);
+}
+
+h1,
+h2,
+h3,
+h4 {
+  color: var(--title-color);
+  font-weight: 550;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: var(--text-color);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* ======================== Header ======================== */
+
+.header {
+  width: 100%;
+  height: var(--header-heigth);
+  position: fixed;
+  align-items: center;
+  padding: 0.4rem 0rem;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  background-color: var(--body-color);
+  box-shadow: 0 -1px 5px rgba(0, 0, 0, 0.15);
+  background-color: rgb(236, 236, 236);
+}
+
+.nav_menu {
+  height: var(--header-heigth);
+}
+
+.nav_item {
+  margin-left: 2px;
+  float: left;
+  margin-right: 4em;
+  margin-left: 4em;
+}
+
+.nav {
+  max-width: 968px;
+  height: var(--header-heigth);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: var(--header-heigth);
+}
+
+.nav_logo {
+  color: var(--title-color);
+  font-weight: 500;
+  font-size: 1.4em;
+  margin-left: 1em;
+}
+
+.nav_logo:hover {
+  transition: 0.1s;
+  color: var(--first-color);
+}
+
+.nav_link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: small;
+  color: var(--title-color);
+  font-weight: bold;
+}
+
+.nav_link:hover {
+  color: var(--first-color);
+  transform: scale(1.2);
+}
+
+.nav_icon {
+  font-size: 1.2rem;
+}
+
+/* ======================== Formulaire ======================== */
+
+.formulaire {
+  background-color: rgb(247, 247, 247);
+  padding: 5em 16em;
+  margin-top: 6em;
+  width: 60em;
+  height: 30em;
+  border-radius: 9px;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.15);
+  text-align: center;
+  margin: auto;
+  margin-top: 11vh;
+  display: flex;
+  justify-content: space-between;
+}
+
+.ligne {
+  text-align: right;
+}
+
+.title {
+  margin-bottom: 3em;
+  border-radius: 11px;
+  background-color: rgb(236, 236, 236);
+}
+
+.inscription,
+.connexion {
+  border-radius: 10px;
+  padding: 2.5em;
+  background-color: rgb(255, 255, 255);
+}
+
+input::placeholder {
+  color: grey;
+  opacity: 0.5;
+}
