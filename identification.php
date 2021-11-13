@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/identification.css">
-    <title>Identification</title>
+    <link rel="stylesheet" href="css/ident.css">
+    <title>Graoully-Blog | Inscription</title>
     <?php 
        $messageErreur ="";
        $Ok_inscri = true;
@@ -82,31 +82,21 @@
 
 </head>
 <body>
-<header class="header" id="header">
-      <nav class="nav container">
-        <a href="index.php" class="nav_logo">Graoully Blog</a>
+    <nav class="main-head">  
+        <h1><a href="#"><span>G</span>raoully-<span>B</span>log</a></h1>
 
-        <!-- <div class="nav_menu">
-          <ul class="nav_list">
-            <li class="nav_item">
-              <a href="./index.html" class="nav_link">
-                <span class="nav_icon">Accueuil</span> 
-              </a>
-            </li>
-            <li class="nav_item active">
-              <a href="#about" class="nav_link active">
-                <span class="nav_icon">Sujet</span> 
-              </a>
-            </li>
-            <li class="nav_item">
-              <a href="#skills" class="nav_link">
-                <span class="nav_icon">Inscription</span>
-              </a>
-            </li>
-          </ul>
-        </div> -->
-      </nav>
-    </header>
+        <ul>
+            <li><a href="accueil.php">Accueil</a></li>
+
+            <li><a href="blog.php"> Blog    </a></li>
+
+            <li><a href="identification.php">  S'inscrire      </a></li>
+
+            <li><a href="contact.php">  Contact </a></li>
+
+        </ul>
+
+    </nav>
 
     <div class = "formulaire">
       <div class="inscription">
@@ -143,6 +133,11 @@
         </form>
       </div>
     </div>
+
+    <footer class = "main-foot">
+        <p class = "part">En partenariat avec <a href="https://www.univ-lorraine.fr/" target="_blank">Univ-Lorraine</a> !</p>
+        <p class="rights">©2021 Graoully-Blog. All Rights Reserved.</p>
+    </footer>
 </body>
 </html>
 
