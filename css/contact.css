@@ -1,0 +1,228 @@
+@import url('https://fonts.googleapis.com/css2?family=Cabin:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap');
+
+body {
+    margin: 0;
+    font-family: 'Cabin', sans-serif;
+}
+
+/* === HEADER === */ 
+.main-head{
+    background-color:#0B1C22;
+    color:white;
+    width:100%;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    display: flex;
+    top: 0px;
+}
+
+.main-head h1 {
+    width: 60%;
+    margin-left: 2% ;
+    font-family: 'Orbitron' ;
+    font-size: 27px;
+}
+
+.main-head ul {
+    display: flex;
+    width: 35%;
+    list-style-type: none;
+    font-size:larger;
+}
+
+.main-head li {
+    margin-top : 13px;
+    text-transform: uppercase;
+}
+
+.main-head a {
+    text-decoration: none;
+    color : white;
+    margin-right: 85px;
+} 
+
+.main-head ul a {
+    transition: color 700ms;
+}
+
+.main-head ul a:hover {
+    color: red;
+}
+
+.main-head span {
+    transition: color 700ms;
+    color : #B83F3D;
+}
+
+.main-head a:hover span {
+    color : red;
+}
+
+
+
+@media screen and (max-width: 1550px) {
+    .main-head h1 {
+        width: 58%;
+    }
+}
+
+@media screen and (max-width: 1450px) {
+    .main-head h1 {
+        width: 50%;
+    }
+}
+
+@media screen and (max-width:500px) {
+    .main-head h1 {
+        width: 40%;
+        border-right: 2px solid white;
+        text-align: center;
+        padding-right: 10px;
+    }
+    .main-head ul {
+        width: 60%;
+        margin-top: 17px;
+        padding-left: 6px;
+    }
+
+    .main-head a {
+        margin-right: 2px;
+        font-size: small;
+    }
+}
+
+
+/* === BODY === */
+
+
+    .main-contact{
+        background-color:rgb(36, 39, 40);
+        color: rgb(232, 230, 227);
+    }
+
+    .contact_title{
+        padding:15px;
+        padding-top: 35px;
+        text-align: center;
+        font-size: 90%;
+    }
+
+    .dev_liste{
+        display: flex;
+        justify-content: center;
+    }
+
+    .dev_membre{
+        background-color: rgb(29, 31, 33);
+        box-shadow: rgba(0, 0, 0, 0.82) 0px 0px 15px, rgba(0, 0, 0, 0.1) 0px 1px 4px;
+        border-radius: 4px;
+        width: 250px;
+        display: flex;
+        flex-direction: column;
+        padding: 12px 15px;
+        margin: 20px;
+        border-radius: 3%;
+        margin-bottom: 45px;
+    }
+
+    .dev_nom{
+        text-align: center;
+        font-size: large;
+        font-weight: 700;
+        margin-bottom: 10px;
+        color: rgb(116, 162, 218);
+    }
+
+    .dev_social{
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        flex: 1 0 auto;
+        text-align: center;
+    }
+
+    .dev_photo{
+        width: 110px;
+        height: 110px;
+        object-fit: cover;
+        border-radius: 50%;
+    }
+
+    .dev_texte{
+        max-height: 4.5em;
+        overflow: hidden;
+        white-space: pre-wrap;
+        margin-bottom:14px;
+    }
+
+    .job{
+        font-size: 75%;
+    }
+
+    .dev_comptes{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .dev_comptes a{
+        text-decoration: none;
+    }
+
+    .dev_compte{
+        height: 25px;
+        width: 25px;
+        margin: 5px;
+        margin-left: 10px;
+        margin-right: 10px;
+        padding: 0;
+    }
+
+    .dev_compte:hover{
+        transform: scale(1.20);
+    }
+
+    /*-------- MAP -------- */
+
+    .map_iut{
+        text-align: center;
+        margin-top: 50px;
+        padding-bottom: 35px;
+    }
+
+    .nous_trouver{
+        padding-bottom: 10px;
+    }
+
+/* === FOOTER === */
+
+.main-foot {
+    background-color: #0B1C22;
+    color:white;
+    display: flex;
+    padding-top: 75px;
+}
+
+.part {
+    width: 90%;
+}
+
+.rights {
+    color:rgba(255, 255, 255, 0.411);
+    width: 20%;
+    padding-bottom: 10px;
+    margin-bottom: 0;
+}
+
+.part a{
+    text-decoration: none;
+    color: #FFEF44;
+    border-bottom: 1px solid #FFEF44;
+    transition: border 250ms ease-in-out;
+}
+
+.part a:hover{
+    border-bottom: 3px solid #FFEF44;
+}
+

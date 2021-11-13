@@ -1,0 +1,128 @@
+@import url('https://fonts.googleapis.com/css2?family=Cabin:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap');
+
+body {
+    margin: 0;
+    font-family: 'Cabin', sans-serif;
+}
+
+/* === HEADER === */ 
+.main-head{
+    background-color:#0B1C22;
+    color:white;
+    width:100%;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    display: flex;
+    top: 0px;
+}
+
+.main-head h1 {
+    width: 60%;
+    margin-left: 2% ;
+    font-family: 'Orbitron' ;
+    font-size: 27px;
+}
+
+.main-head ul {
+    display: flex;
+    width: 35%;
+    list-style-type: none;
+    font-size:larger;
+}
+
+.main-head li {
+    margin-top : 13px;
+    text-transform: uppercase;
+}
+
+.main-head a {
+    text-decoration: none;
+    color : white;
+    margin-right: 85px;
+} 
+
+.main-head ul a {
+    transition: color 700ms;
+}
+
+.main-head ul a:hover {
+    color: red;
+}
+
+.main-head span {
+    transition: color 700ms;
+    color : #B83F3D;
+}
+
+.main-head a:hover span {
+    color : red;
+}
+
+
+
+@media screen and (max-width: 1550px) {
+    .main-head h1 {
+        width: 58%;
+    }
+}
+
+@media screen and (max-width: 1450px) {
+    .main-head h1 {
+        width: 50%;
+    }
+}
+
+@media screen and (max-width:500px) {
+    .main-head h1 {
+        width: 40%;
+        border-right: 2px solid white;
+        text-align: center;
+        padding-right: 10px;
+    }
+    .main-head ul {
+        width: 60%;
+        margin-top: 17px;
+        padding-left: 6px;
+    }
+
+    .main-head a {
+        margin-right: 2px;
+        font-size: small;
+    }
+}
+
+
+/* === BODY === */
+
+/* === FOOTER === */
+
+.main-foot {
+    background-color: #0B1C22;
+    color:white;
+    display: flex;
+    padding-top: 75px;
+}
+
+.part {
+    width: 90%;
+}
+
+.rights {
+    color:rgba(255, 255, 255, 0.411);
+    width: 20%;
+    padding-bottom: 10px;
+    margin-bottom: 0;
+}
+
+.part a{
+    text-decoration: none;
+    color: #FFEF44;
+    border-bottom: 1px solid #FFEF44;
+    transition: border 250ms ease-in-out;
+}
+
+.part a:hover{
+    border-bottom: 3px solid #FFEF44;
+}
+
