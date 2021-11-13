@@ -5,10 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/identification.css">
-    <title>Identification</title>
+    <title>Inscription</title>
     <?php 
        $messageErreur ="";
        $Ok_inscri = true;
+       $id = 0;
         if(isset($_POST['inscription'])) {
             if(empty($_POST['pseudo'])) {
                 $messageErreur = $messageErreur + "Saisir un pseudo";
@@ -51,10 +52,10 @@
                 $Ok_inscri = false;
             }
             if ($Ok_inscri) {
-                require_once 'connect.php';
+                require_once ('connect.php');
                 $req = 'INSERT INTO redacteur (idredacteur,nom,prenom,adressemail,motdepasse,pseudo) VALUES(?,?,?,?,?,?)';
                 $insert = $objPdo->prepare($req);
-                $insert->execute(array($id,$_POST['pseudo'],$_POST['prenom'],$_POST['nom'],$_POST['mel'],$_POST['mdp']));
+                $insert->execute(array($id,$_POST['pseudo'],$_POST['prenom'],$_POST['nom'],$_POST['mail_inscri'],$_POST['password_inscri']));
             }
         }       
     ?>
@@ -70,7 +71,7 @@
 
             <li><a href="blog.php"> Blog    </a></li>
 
-            <li><a href="identification.php">  S'inscrire      </a></li>
+            <li><a href="inscription.php">  S'inscrire      </a></li>
 
             <li><a href="contact.php">  Contact </a></li>
 
@@ -82,13 +83,13 @@
       <div class="inscription">
         <h2 class="title">Inscription</h2>
 
-        <form action="identification.php" method="POST" name ='identification' >
+        <form action="inscription.php" method="POST" name ='inscription' >
             <div class="champs_inscri">    
               <div class="saisie"><input type="text" name="pseudo" id="pseudo" placeholder = "Pseudo" size = 25> </div> </br>
               <div class="saisie"><input type="text" name="prenom" id="prenom" placeholder = "Prénom" size = 25> </div> </br>
               <div class="saisie"><input type="text" name="nom" id="nom" placeholder = "Nom" size = 25> </div> </br>
-              <div class="saisie"><input type="text" name="mel" id="mail_inscri" placeholder = "Email" size = 25> </div> </br>
-              <div class="saisie"><input type="password" name="password_inscri" id="mdp" placeholder = "Password" size = 25> </div> </br>
+              <div class="saisie"><input type="text" name="mail_inscri" id="mail_inscri" placeholder = "Email" size = 25> </div> </br>
+              <div class="saisie"><input type="password" name="password_inscri" id="password_inscri" placeholder = "Password" size = 25> </div> </br>
             </div>  
 
             <div class = "boutons">
