@@ -58,27 +58,6 @@
             }
         }       
     ?>
-    <?php
-      require_once 'connect.php';
-      session_start();
-        
-      if(isset($_POST['connexion'])) {
-          $email = $_POST['mail_connex'];
-          $password = $_POST['password_connex'];
-
-          $check = $objPdo->prepare('SELECT adressemail,motdepasse, pseudo FROM redacteur WHERE adressemail = ?');
-          $check->execute(array($email));
-          $data = $check->fetch();
-          $row = $check->rowCount();
-
-          if($rows == 1) {
-            if($data['motdepasse'] == $password) {
-              $_SESSION['user'] = $data['pseudo'];
-              header("Location: index.php");
-            }
-          }
-      } 
-    ?>
 
 </head>
 <body>
@@ -113,12 +92,12 @@
         <h2 class="title">Inscription</h2>
 
         <form action="identification.php" method="POST" name ='identification' >
-            <div class="champs">    
-              <div class="ligne"><label for="pseudo">Pseudo </label><input type="text" name="pseudo" id="pseudo" placeholder = "Neopreda" size = 25> </div> </br>
-              <div class="ligne"><label for="prenom">Prénom </label><input type="text" name="prenom" id="prenom" placeholder = "Noé" size = 25> </div> </br>
-              <div class="ligne"><label for="nom">Nom </label><input type="text" name="nom" id="nom" placeholder = "Harrison" size = 25> </div> </br>
-              <div class="ligne"><label for="mel">Email </label><input type="text" name="mel" id="mail_inscri" placeholder = "NoeHarrison@gmail.com" size = 25> </div> </br>
-              <div class="ligne"><label for="mdp">Mot de passe </label><input type="password" name="password_inscri" id="mdp" size = 25> </div> </br>
+            <div class="champs_inscri">    
+              <div class="saisie"><input type="text" name="pseudo" id="pseudo" placeholder = "Pseudo" size = 25> </div> </br>
+              <div class="saisie"><input type="text" name="prenom" id="prenom" placeholder = "Prénom" size = 25> </div> </br>
+              <div class="saisie"><input type="text" name="nom" id="nom" placeholder = "Nom" size = 25> </div> </br>
+              <div class="saisie"><input type="text" name="mel" id="mail_inscri" placeholder = "Email" size = 25> </div> </br>
+              <div class="saisie"><input type="password" name="password_inscri" id="mdp" placeholder = "Password" size = 25> </div> </br>
             </div>  
 
             <div class = "boutons">
@@ -127,22 +106,6 @@
         </form>
 
       </div>
-
-      <div class="connexion">
-        <h2 class="title">Connexion</h2>
-
-        <form action="identification.php" method="POST" name ='val' >
-          <div class="champs">    
-            <div class="ligne"><label for="mel">Email ou pseudo </label><input type="text" name="mel" id="mail_connex" placeholder = "NoeHarrison@gmail.com" size = 25> </div> </br>
-            <div class="ligne"><label for="mdp">Mot de passe </label><input type="password" name="password_connex" id="mdp" size = 25> </div> </br>
-          </div>  
-
-          <div class = "boutons">
-            <input type="submit" name="connexion" value="connexion">
-          </div>
-        </form>
-      </div>
-    </div>
 </body>
 </html>
 
